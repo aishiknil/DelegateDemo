@@ -1,22 +1,23 @@
 ﻿using System;
 namespace App
 {
-    delegate int MyDel(int x, int y);
+    delegate void MyDel(int x, int y);
     public class Program
 
     {
-        public static int Add(int x, int y)
+        public static void Add(int x, int y)
         {
-            return (x + y);
+            Console.WriteLine($"Addition = {x+y}");
         }
-        public static int Mult(int x, int y)
+        public static void Mult(int x, int y)
         {
-            return (x * y);
+            System.Console.WriteLine($"Multiplication = {x * y}");
         }
         static void Main(string[] args)
         {
             MyDel del = new MyDel(Add);
-
+            del += Mult;
+            del(10,20);
         }
     }
 }
